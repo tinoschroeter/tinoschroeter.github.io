@@ -80,7 +80,7 @@ a {
 .project-tagline {
   margin-bottom: 2rem;
   font-weight: normal;
-  opacity: 0.1; }
+  opacity: 0.8; }
   @media screen and (min-width: 64em) {
     .project-tagline {
       font-size: 1.25rem; } }
