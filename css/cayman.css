@@ -52,7 +52,7 @@ a {
 .page-header {
   color: #fff;
   text-align: center;
-  background-color: #159957;
+  background-color: #60B5CC;
   background-image: linear-gradient(120deg, #60B5CC, #60B5CC,); }
   @media screen and (min-width: 64em) {
     .page-header {
