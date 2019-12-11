@@ -1,24 +1,46 @@
----
-layout: default
----
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link rel="shortcut icon" href="static/favicon_inv.ico">
+  <script language="javascript" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/p5.js"></script>
+  <script language="javascript" type="text/javascript" src="/assets/js/vehicle.js"></script>
 
-<style type="text/css" media="screen">
-  .container {
-    margin: 10px auto;
-    max-width: 600px;
-    text-align: center;
+  <!-- https://www.youtube.com/watch?v=4hA7G3gup-4 -->
+  <script language="javascript" type="text/javascript">
+var font;
+var vehicles = [];
+
+function preload() {
+  font = loadFont('/assets/font/AvenirNextLTPro-Demi.otf');
+}
+
+function setup() {
+  createCanvas(windowWidth, windowHeight);
+  background(0,153,255);
+
+  var points = font.textToPoints('404', windowWidth/2 -400 , windowHeight/2, 400, {
+    sampleFactor: 0.25
+  });
+
+  for (var i = 0; i < points.length; i++) {
+    var pt = points[i];
+    var vehicle = new Vehicle(pt.x, pt.y);
+    vehicles.push(vehicle);
   }
-  h1 {
-    margin: 30px 0;
-    font-size: 4em;
-    line-height: 1;
-    letter-spacing: -1px;
+}
+
+function draw() {
+  background(0,153,255);
+  for (var i = 0; i < vehicles.length; i++) {
+    var v = vehicles[i];
+    v.behaviors();
+    v.update();
+    v.show();
   }
-</style>
-
-<div class="container">
-  <h1>404</h1>
-
-  <p><strong>Page not found :(</strong></p>
-  <p>The requested page could not be found.</p>
-</div>
+}
+  </script>
+  <style> body {padding: 0; margin: 0;} </style>
+</head>
+<body>
+</body>
+</html>
