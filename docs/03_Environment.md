@@ -4,7 +4,7 @@ title: 03 Environment
 nav_order: 6
 ---
 
-# 03 Environment
+# Environment
 {: .no_toc }
 
 ## Table of contents

@@ -4,7 +4,7 @@ title: 08 Events
 nav_order: 6
 ---
 
-# 08 Events
+# Events
 {: .no_toc }
 
 ## Table of contents

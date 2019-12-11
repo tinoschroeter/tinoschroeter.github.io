@@ -4,7 +4,7 @@ title: 04 Structure
 nav_order: 6
 ---
 
-# 04 Structure
+# Structure
 {: .no_toc }
 
 ## Table of contents

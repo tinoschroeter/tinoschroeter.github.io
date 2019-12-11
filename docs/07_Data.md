@@ -4,7 +4,7 @@ title: 07 Data
 nav_order: 6
 ---
 
-# 07 Data
+# Data
 {: .no_toc }
 
 ## Table of contents

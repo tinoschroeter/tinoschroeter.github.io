@@ -4,7 +4,7 @@ title: 02 Shape
 nav_order: 6
 ---
 
-# 02 Shape
+# Shape
 {: .no_toc }
 
 ## Table of contents

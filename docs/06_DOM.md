@@ -4,7 +4,7 @@ title: 06 DOM
 nav_order: 6
 ---
 
-# 06 DOM
+# DOM
 {: .no_toc }
 
 ## Table of contents

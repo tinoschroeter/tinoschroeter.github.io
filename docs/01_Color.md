@@ -4,7 +4,7 @@ title: 01 Color
 nav_order: 6
 ---
 
-# 01 Color
+# Color
 {: .no_toc }
 
 ## Table of contents

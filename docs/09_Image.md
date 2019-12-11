@@ -4,7 +4,7 @@ title: 09 Image
 nav_order: 6
 ---
 
-# 09 Image
+# Image
 {: .no_toc }
 
 ## Table of contents

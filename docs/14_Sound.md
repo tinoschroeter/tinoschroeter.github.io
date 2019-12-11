@@ -4,7 +4,7 @@ title: 14 Sound
 nav_order: 6
 ---
 
-# 14 Sound
+# Sound
 {: .no_toc }
 
 ## Table of contents

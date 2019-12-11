@@ -4,7 +4,7 @@ title: 15 Libraries
 nav_order: 6
 ---
 
-# 15 Libraries
+# Libraries
 {: .no_toc }
 
 ## Table of contents

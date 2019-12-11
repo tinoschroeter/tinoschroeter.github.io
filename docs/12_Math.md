@@ -4,7 +4,7 @@ title: 12 Math
 nav_order: 6
 ---
 
-# 12 Math
+# Math
 {: .no_toc }
 
 ## Table of contents

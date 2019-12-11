@@ -4,7 +4,7 @@ title: 13 Typography
 nav_order: 6
 ---
 
-# 13 Typography
+# Typography
 {: .no_toc }
 
 ## Table of contents
