@@ -7,7 +7,7 @@ nav_order: 6
 # Image
 {: .no_toc }
 
-## Table of contents
+## Inhalt
 {: .no_toc .text-delta }
 
 1. TOC
@@ -15,61 +15,59 @@ nav_order: 6
 
 ---
 
-## Color schemes
-{: .d-inline-block }
+## Bouncing DVD Logo
 
-New
-{: .label .label-green }
 
-Just the Docs supports two color schemes: light (default), and dark.
+<iframe style="width: 600px; height: 400px; overflow: hidden;"  scrolling="no" frameborder="0" src="https://editor.p5js.org/tinoschroeter/embed/Dgc3bI8d_"></iframe>
 
-To enable a color scheme, set the `color_scheme` parameter in your site's `_config.yml` file:
+[Code editieren](https://editor.p5js.org/tinoschroeter/sketches/Dgc3bI8d_){: .btn .btn-purple .mr-2 }
 
-#### Example
-{: .no_toc }
 
-```yaml
-# Color scheme currently only supports "dark" or nil (default)
-color_scheme: "dark"
-```
-<button class="btn js-toggle-dark-mode">Preview dark color scheme</button>
+```javascript
+let dvd;
 
-<script type="text/javascript" src="{{ "/assets/js/dark-mode-preview.js" | absolute_url }}"></script>
+function preload() {
+  img = loadImage('dvd.jpeg');
+}
 
-## Specific visual customization
+function setup() {
+  createCanvas(600, 400);
+  dvd = new Dvd();
+}
 
-To customize your site’s aesthetic, open `_sass/custom/custom.scss` in your editor to see if there is a variable that you can override. Most styles like fonts, colors, spacing, etc. are derived from these variables. To override a specific variable, uncomment its line and change its value.
+function draw() {
+  background(0);
+  dvd.move();
+  dvd.edge();
+  dvd.show();
+  
+  //console.log(img.height);
+  //console.log(img.width);
+}
 
-For example, to change the link color from the purple default to blue, open `_sass/custom/custom.css` and find the `$link-color` variable on line `50`. Uncomment it, and change its value to our `$blue-000` variable, or another shade of your choosing.
-
-#### Example
-{: .no_toc }
-
-```scss
-// ...
-//
-// $body-text-color: $grey-dk-100;
-// $body-heading-color: $grey-dk-300;
-$link-color: $blue-000;
-//
-// ...
-```
-
-_Note:_ Editing the variables directly in `_sass/support/variables.scss` is not recommended and can cause other dependencies to fail.
-
-## Override styles
-
-For styles that aren't defined as a variables, you may want to modify specific CSS classes. To add your own CSS overrides at the end of the cascade, edit `_sass/overrides.scss`. This will allow for all overrides to be kept in a single file, and for any upstream changes to still be applied.
-
-For example, if you'd like to add your own styles for printing a page, you could add the following styles.
-
-#### Example
-{: .no_toc }
-
-```scss
-// Print-only styles.
-@media print {
-  .side-bar, .page-header { display: none; }
-  .main-content { max-width: auto; margin: 1em;}
+function Dvd() {
+  this.x = width/2;
+  this.y = height/2;
+  this.r = 30;
+  this.dirx = 4;
+  this.diry = 4;
+  
+  this.move = function() {
+    this.x += this.dirx;
+    this.y += this.diry;
+  }
+  
+  this.edge = function() {
+    if(this.x < 0 || this.x  > width - 100) {
+      this.dirx = -this.dirx;
+    } else if(this.y < 0 || this.y > height - 100) {
+      this.diry = -this.diry;
+    }
+  }
+  
+  this.show = function() {
+    fill(255);
+    image(img, this.x, this.y, 100, 100);
+  }
 }
 ```

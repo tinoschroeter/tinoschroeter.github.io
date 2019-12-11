@@ -116,3 +116,19 @@ https://de.wikipedia.org/wiki/Snake_(Computerspiel)
 ## Tic Tac Toe
 
 https://de.wikipedia.org/wiki/Tic-Tac-Toe
+
+## Chrome Dinosaur Game
+
+## Angry Birds
+
+## flappy bird
+
+## frogger
+
+## Game of Life
+
+## Minesweeper
+
+## Asteroids game
+
+## Space Invaders
