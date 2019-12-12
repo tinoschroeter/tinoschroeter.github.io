@@ -72,8 +72,10 @@ function Shape(x) {
 }
 ```
 
+
 ## Schnee 
 {: .d-inline-block }
+
 
 <iframe style="width: 600px; height: 400px; overflow: hidden;"  scrolling="no" frameborder="0" src="https://editor.p5js.org/tinoschroeter/embed/ibPxieiIr"></iframe>                                                                                                  
 
@@ -117,6 +119,39 @@ function Snow() {
     fill(255);
     noStroke();
     circle(this.x, this.y, this.d);
+  }
+}
+```
+
+## 10PRINT
+{: .d-inline-block }
+
+<iframe style="width: 600px; height: 400px; overflow: hidden;"  scrolling="no" frameborder="0" src="https://editor.p5js.org/tinoschroeter/embed/owH2hgheA"></iframe>
+
+[Code editieren](https://editor.p5js.org/tinoschroeter/sketches/owH2hgheA){: .btn .btn-purple .mr-2 }
+
+```javascript
+let d = 20;
+let filling;
+
+function setup() {
+  createCanvas(400, 400);
+}
+
+function draw() {
+  if (frameCount % 60 === 0) {
+    background(255);
+    for (let x = d; x < width; x += d * 2) {
+      for (let y = d; y < height; y += d * 2) {
+        filling = floor(random(0, 2))
+        if (filling > 0) {
+          fill(0);
+        } else {
+          noFill();
+        }
+        circle(x, y, d);
+      }
+    }
   }
 }
 ```
