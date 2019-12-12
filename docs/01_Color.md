@@ -15,61 +15,61 @@ nav_order: 6
 
 ---
 
-## Color schemes
+## bunte Baelle
 {: .d-inline-block }
 
-New
-{: .label .label-green }
+<iframe style="width: 600px; height: 400px; overflow: hidden;"  scrolling="no" frameborder="0" src="https://editor.p5js.org/tinoschroeter/embed/kLrV219z-"></iframe>
 
-Just the Docs supports two color schemes: light (default), and dark.
+[Code editieren](https://editor.p5js.org/tinoschroeter/sketches/kLrV219z-){: .btn .btn-purple .mr-2 }
 
-To enable a color scheme, set the `color_scheme` parameter in your site's `_config.yml` file:
+```javascript
+let ball = [];
 
-#### Example
-{: .no_toc }
+function setup() {
+  createCanvas(600, 400);
+  for (let i = 0; i < 120; i++) {
+    ball.push(new Ball());
+  }
+}
 
-```yaml
-# Color scheme currently only supports "dark" or nil (default)
-color_scheme: "dark"
-```
-<button class="btn js-toggle-dark-mode">Preview dark color scheme</button>
+function draw() {
+  background(0);
+  for (let i = 0; i < ball.length; i++) {
+    ball[i].show();
+    ball[i].edge();
+    ball[i].move();
+  }
+}
 
-<script type="text/javascript" src="{{ "/assets/js/dark-mode-preview.js" | absolute_url }}"></script>
+function Ball() {
+  this.r = random(50, 255);
+  this.g = random(50, 255);
+  this.b = random(50, 255);
 
-## Specific visual customization
+  this.d = random(30, 80);
 
-To customize your site’s aesthetic, open `_sass/custom/custom.scss` in your editor to see if there is a variable that you can override. Most styles like fonts, colors, spacing, etc. are derived from these variables. To override a specific variable, uncomment its line and change its value.
+  this.x = random(0, width);
+  this.y = random(0, height);
 
-For example, to change the link color from the purple default to blue, open `_sass/custom/custom.css` and find the `$link-color` variable on line `50`. Uncomment it, and change its value to our `$blue-000` variable, or another shade of your choosing.
+  this.dx = random(-5, 5);
+  this.dy = random(-5, 5);
 
-#### Example
-{: .no_toc }
+  this.move = function() {
+    this.x += this.dx;
+    this.y += this.dy;
+  }
 
-```scss
-// ...
-//
-// $body-text-color: $grey-dk-100;
-// $body-heading-color: $grey-dk-300;
-$link-color: $blue-000;
-//
-// ...
-```
+  this.edge = function() {
+    if (this.x < 0 || this.x > width) {
+      this.dx = -this.dx;
+    } else if (this.y < 0 || this.y > height) {
+      this.dy = -this.dy;
+    }
+  }
 
-_Note:_ Editing the variables directly in `_sass/support/variables.scss` is not recommended and can cause other dependencies to fail.
-
-## Override styles
-
-For styles that aren't defined as a variables, you may want to modify specific CSS classes. To add your own CSS overrides at the end of the cascade, edit `_sass/overrides.scss`. This will allow for all overrides to be kept in a single file, and for any upstream changes to still be applied.
-
-For example, if you'd like to add your own styles for printing a page, you could add the following styles.
-
-#### Example
-{: .no_toc }
-
-```scss
-// Print-only styles.
-@media print {
-  .side-bar, .page-header { display: none; }
-  .main-content { max-width: auto; margin: 1em;}
+  this.show = function() {
+    fill(this.r, this.g, this.b);
+    circle(this.x, this.y, this.d / 2);
+  }
 }
 ```
