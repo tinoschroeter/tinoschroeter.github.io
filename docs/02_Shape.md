@@ -7,7 +7,7 @@ nav_order: 6
 # Shape
 {: .no_toc }
 
-## Table of contents
+## Inhalt
 {: .no_toc .text-delta }
 
 1. TOC
@@ -15,61 +15,59 @@ nav_order: 6
 
 ---
 
-## Color schemes
+## Heissluftballon
 {: .d-inline-block }
 
-New
-{: .label .label-green }
+<iframe style="width: 600px; height: 400px; overflow: hidden;"  scrolling="no" frameborder="0" src="https://editor.p5js.org/tinoschroeter/embed/yHKE5WEmo"></iframe>
 
-Just the Docs supports two color schemes: light (default), and dark.
+[Code editieren](https://editor.p5js.org/tinoschroeter/sketches/yHKE5WEmo){: .btn .btn-purple .mr-2 }
 
-To enable a color scheme, set the `color_scheme` parameter in your site's `_config.yml` file:
+```javascript
+let shape = [];
 
-#### Example
-{: .no_toc }
+function setup() {
+  createCanvas(600, 400);
+  rectMode(CENTER);
+  for (let i = 0; i < 40; i++) {
+    shape.push(new Shape());
+  }
+}
 
-```yaml
-# Color scheme currently only supports "dark" or nil (default)
-color_scheme: "dark"
-```
-<button class="btn js-toggle-dark-mode">Preview dark color scheme</button>
+function draw() {
+  background(255);
+  for (let i = 0; i < 5; i++) {
+    shape[i].move();
+    shape[i].reset();
+    shape[i].show();
+  }
+}
 
-<script type="text/javascript" src="{{ "/assets/js/dark-mode-preview.js" | absolute_url }}"></script>
+function Shape(x) {
+  this.x = random(0, width);
+  this.y = height + random(50, height);
+  this.size = random(60, 90);
+  this.color = color(random(0, 255), random(0, 255), random(0, 255))
 
-## Specific visual customization
+  this.move = function() {
+    this.y -= random(1, 4);
+  }
 
-To customize your site’s aesthetic, open `_sass/custom/custom.scss` in your editor to see if there is a variable that you can override. Most styles like fonts, colors, spacing, etc. are derived from these variables. To override a specific variable, uncomment its line and change its value.
+  this.reset = function() {
+    if (this.y + this.size < 0) {
+      this.y = height + random(5, 200);
+    }
+  }
 
-For example, to change the link color from the purple default to blue, open `_sass/custom/custom.css` and find the `$link-color` variable on line `50`. Uncomment it, and change its value to our `$blue-000` variable, or another shade of your choosing.
-
-#### Example
-{: .no_toc }
-
-```scss
-// ...
-//
-// $body-text-color: $grey-dk-100;
-// $body-heading-color: $grey-dk-300;
-$link-color: $blue-000;
-//
-// ...
-```
-
-_Note:_ Editing the variables directly in `_sass/support/variables.scss` is not recommended and can cause other dependencies to fail.
-
-## Override styles
-
-For styles that aren't defined as a variables, you may want to modify specific CSS classes. To add your own CSS overrides at the end of the cascade, edit `_sass/overrides.scss`. This will allow for all overrides to be kept in a single file, and for any upstream changes to still be applied.
-
-For example, if you'd like to add your own styles for printing a page, you could add the following styles.
-
-#### Example
-{: .no_toc }
-
-```scss
-// Print-only styles.
-@media print {
-  .side-bar, .page-header { display: none; }
-  .main-content { max-width: auto; margin: 1em;}
+  this.show = function() {
+    fill(this.color);
+    noStroke();
+    ellipse(this.x, this.y, this.size, this.size);
+    fill(0);
+    stroke(0);
+    line(this.x, this.y + this.size / 2, this.x, this.y + this.size * 1.3);
+    noStroke();
+    fill(168, 142, 82);
+    rect(this.x, this.y + this.size * 1.3, 40, 20);
+  }
 }
 ```
