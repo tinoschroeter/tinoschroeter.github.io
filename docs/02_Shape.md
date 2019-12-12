@@ -71,3 +71,52 @@ function Shape(x) {
   }
 }
 ```
+
+## Schnee 
+{: .d-inline-block }
+
+<iframe style="width: 600px; height: 400px; overflow: hidden;"  scrolling="no" frameborder="0" src="https://editor.p5js.org/tinoschroeter/embed/ibPxieiIr"></iframe>                                                                                                  
+
+[Code editieren](https://editor.p5js.org/tinoschroeter/sketches/ibPxieiIr){: .btn .btn-purple .mr-2 }
+
+```javascript
+let snow = [];
+
+function setup() {
+  createCanvas(600, 400);
+  for (let i = 0; i < 100; i++) {
+    snow.push(new Snow());
+  }
+}
+
+function draw() {
+  background(0);
+  for (let i = 0; i < snow.length; i++) {
+    snow[i].move();
+    snow[i].reset();
+    snow[i].show();
+  }
+}
+
+function Snow() {
+  this.x = random(-50, width + 50);
+  this.y = random(-height * 2, -height);
+  this.d = random(2, 9);
+
+  this.move = function() {
+    this.y += this.d * 0.8;
+  }
+
+  this.reset = function() {
+    if (this.y > height) {
+      this.y = random(-height * 2, height);
+    }
+  }
+
+  this.show = function() {
+    fill(255);
+    noStroke();
+    circle(this.x, this.y, this.d);
+  }
+}
+```
