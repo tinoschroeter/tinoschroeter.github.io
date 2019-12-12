@@ -76,6 +76,7 @@ function Shape(x) {
 ## Schnee 
 {: .d-inline-block }
 
+das ist eine einfache Schnee Simulation
 
 <iframe style="width: 600px; height: 400px; overflow: hidden;"  scrolling="no" frameborder="0" src="https://editor.p5js.org/tinoschroeter/embed/ibPxieiIr"></iframe>                                                                                                  
 
@@ -125,6 +126,8 @@ function Snow() {
 
 ## 10PRINT
 {: .d-inline-block }
+
+mal ein Versuch, ein Beispiel mit einer nested loop zu erstellen.
 
 <iframe style="width: 600px; height: 400px; overflow: hidden;"  scrolling="no" frameborder="0" src="https://editor.p5js.org/tinoschroeter/embed/owH2hgheA"></iframe>
 
