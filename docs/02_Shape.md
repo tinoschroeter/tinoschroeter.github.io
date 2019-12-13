@@ -158,3 +158,49 @@ function draw() {
   }
 }
 ```
+
+## Random Walker 
+{: .d-inline-block }
+
+Random Waler Simulation
+
+<iframe style="width: 600px; height: 400px; overflow: hidden;"  scrolling="no" frameborder="0" src="https://editor.p5js.org/tinoschroeter/embed/NeupyoMya"></iframe>
+
+[Code editieren](https://editor.p5js.org/tinoschroeter/sketches/NeupyoMya){: .btn .btn-purple .mr-2 }
+
+```javascript
+let walker = [];
+
+function setup() {
+  createCanvas(600, 400);
+  background(255);
+  for (let i = 0; i < 100; i++) {
+    walker.push(new Walker());
+  }
+}
+
+function draw() {
+  for (let i = 0; i < walker.length; i++) {
+    walker[i].move();
+    walker[i].show();
+  }
+}
+
+function Walker() {
+  this.x = random(10, width - 10);
+  this.y = random(10, height - 10);
+  this.r = random(2, 5);
+  this.c = color(random(50, 255), random(50, 255), random(50, 255));
+
+  this.move = function() {
+    this.x += random(-2, 2);
+    this.y += random(-2, 2)
+  }
+
+  this.show = function() {
+    fill(this.c);
+    noStroke();
+    circle(this.x, this.y, this.r);
+  }
+}
+```
