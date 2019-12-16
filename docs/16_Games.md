@@ -120,7 +120,9 @@ https://de.wikipedia.org/wiki/Tic-Tac-Toe
 ## Chrome Dinosaur Game
 {: .d-inline-block }
 
-das ist eine sehr einfache Version vom Chrome Dinosaur Game
+das ist eine sehr einfache Version vom Chrome Dinosaur Game.
+Um die Kollision zu erkennen benutze ich p5.collide2D.
+
 
 <iframe style="width: 600px; height: 400px; overflow: hidden;"  scrolling="no" frameborder="0" src="https://editor.p5js.org/tinoschroeter/embed/5xl6mbu1E"></iframe>
 
@@ -145,6 +147,8 @@ function draw() {
   dinosaur.show();
 
   if (cactus.hit(dinosaur)) {
+    fill(0);
+    text('getroffen!!', width/2, 50);
     console.log('hit');
   }
   cactus.move();
@@ -189,7 +193,7 @@ function Cactus() {
   this.size = 60;
 
   this.move = function() {
-    this.x -= 5;
+    this.x -= 6;
   }
 
   this.hit = function(dinosaur) {
