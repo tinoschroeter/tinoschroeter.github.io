@@ -158,3 +158,70 @@ function draw() {
   }
 }
 ```
+
+## Starfield
+{: .d-inline-block }
+
+Starfield Simulation.
+
+<iframe style="width: 600px; height: 400px; overflow: hidden;"  scrolling="no" frameborder="0" src="https://editor.p5js.org/tinoschroeter/embed/iIoi0e2Es"></iframe>
+
+[Code editieren](https://editor.p5js.org/tinoschroeter/sketches/iIoi0e2Es){: .btn .btn-purple .mr-2 }
+
+```javascript
+let star = [];
+
+function setup() {
+  createCanvas(600, 400);
+  frameRate(60);
+  for (let i = 0; i < height; i++) {
+    star.push(new Star());
+  }
+}
+
+function draw() {
+  background(0);
+  for (let i = 0; i < star.length; i++) {
+    star[i].update();
+    star[i].show();
+    star[i].edge();
+  }
+}
+
+function Star() {
+
+  this.init = function() {
+    this.x = width / 2;
+    this.y = height / 2;
+    this.r = 0;
+    this.xd = random(-1, 1)
+    this.yd = random(-1, 1);
+  }
+
+  this.update = function() {
+    if (this.r > 1.17) {
+      this.xd *= 1.07;
+      this.yd *= 1.07;
+    }
+    this.r += 0.03;
+    this.x += this.xd * 30;
+    this.y += this.yd * 30;
+  }
+
+  this.edge = function() {
+    if (this.x < 0 || this.x > width) {
+      this.init();
+    } else if (this.y < 0 || this.y > height) {
+      this.init();
+    }
+  }
+
+  this.init();
+
+  this.show = function() {
+    fill(255);
+    noStroke();
+    circle(this.x, this.y, this.r);
+  }
+}
+```
