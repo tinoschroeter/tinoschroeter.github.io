@@ -118,6 +118,89 @@ https://de.wikipedia.org/wiki/Snake_(Computerspiel)
 https://de.wikipedia.org/wiki/Tic-Tac-Toe
 
 ## Chrome Dinosaur Game
+{: .d-inline-block }
+
+das ist eine sehr einfache Version vom Chrome Dinosaur Game
+
+<iframe style="width: 600px; height: 400px; overflow: hidden;"  scrolling="no" frameborder="0" src="https://editor.p5js.org/tinoschroeter/embed/5xl6mbu1E"></iframe>
+
+[Code editieren](https://editor.p5js.org/tinoschroeter/sketches/5xl6mbu1E){: .btn .btn-purple .mr-2 }
+
+```javascript
+let dinosaur;
+let cactus;
+
+function setup() {
+  createCanvas(600, 400);
+  dinosaur = new Dinosaur();
+  cactus = new Cactus();
+}
+
+function draw() {
+  background(255);
+  if (frameCount % 200 === 0) {
+    cactus = new Cactus();
+  }
+  dinosaur.move();
+  dinosaur.show();
+
+  if (cactus.hit(dinosaur)) {
+    console.log('hit');
+  }
+  cactus.move();
+  cactus.show();
+}
+
+function keyPressed() {
+  if (key == ' ') {
+    dinosaur.jump();
+  }
+}
+
+function Dinosaur() {
+  this.x = 50;
+  this.y = height - 50;
+  this.yv = 0;
+  this.gravity = 2;
+  this.size = 50;
+
+  this.jump = function() {
+
+    if (this.yv < -this.size) {
+      this.yv = 32;
+    }
+  }
+
+  this.move = function() {
+    this.y -= this.yv;
+    this.yv -= 2;
+    this.y = constrain(this.y, 0, height - this.size);
+  }
+
+  this.show = function() {
+    noFill();
+    rect(this.x, this.y, this.size, this.size);
+  }
+}
+
+function Cactus() {
+  this.x = width;
+  this.y = height - 60;
+  this.size = 60;
+
+  this.move = function() {
+    this.x -= 5;
+  }
+
+  this.hit = function(dinosaur) {
+    return collideRectRect(this.x, this.y, this.size, this.size, dinosaur.x, dinosaur.y, dinosaur.size, dinosaur.size);
+  }
+
+  this.show = function() {
+    rect(this.x, this.y, this.size, this.size);
+  }
+}
+```
 
 ## Angry Birds
 
