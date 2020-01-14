@@ -225,3 +225,65 @@ function Star() {
   }
 }
 ```
+
+## Feuerwerk
+{: .d-inline-block }
+
+Feuerwerk Simulation.
+
+<iframe style="width: 600px; height: 400px; overflow: hidden;"  scrolling="no" frameborder="0" src="https://editor.p5js.org/tinoschroeter/embed/9Q6XbWwlH"></iframe>
+
+[Code editieren](https://editor.p5js.org/tinoschroeter/sketches/9Q6XbWwlH){: .btn .btn-purple .mr-2 }
+
+```javascript
+let firework = [];
+let explode = [];
+
+function setup() {
+  createCanvas(600, 400);
+  firework.push(new Firework());
+}
+
+function draw() {
+  background(0, 0, 0, 30);
+  if (random(1) > 0.97) {
+    firework.push(new Firework());
+  }
+  for (let i in firework) {
+    firework[i].update();
+    firework[i].show();
+  }
+}
+
+function Firework() {
+  this.pos = createVector(random(20, width - 20), height + random(20));
+  this.vel = createVector(0, -25);
+  this.size = 4;
+  this.grav = 0.9;
+  this.explode = false;
+
+  this.update = function() {
+    fill(255);
+    this.pos.add(this.vel);
+    this.vel.add(0, this.grav);
+    this.size *= 1.02;
+
+    if (this.pos.y > height * 50) {
+      firework.shift();
+    }
+  }
+
+  this.show = function() {
+    circle(this.pos.x, this.pos.y, this.size);
+    if (this.vel.y >= 0) {
+      for (let i = 0; i < 70; i++) {
+        this.size = 0;
+        this.explodeX = this.pos.x + random(-i * 1.5, i * 1.5);
+        this.explodeY = this.pos.y + random(-i * 1.5, i * 1.5);
+        circle(this.explodeX, this.explodeY, random(3));
+      }
+      this.grav = 0.2;
+    }
+  }
+}
+```
