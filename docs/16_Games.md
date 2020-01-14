@@ -121,7 +121,7 @@ https://de.wikipedia.org/wiki/Tic-Tac-Toe
 {: .d-inline-block }
 
 das ist eine sehr einfache Version vom Chrome Dinosaur Game.
-Um die Kollision zu erkennen benutze ich p5.collide2D.
+Um die Kollision zu erkennen benutze ich p5.collide2D. [16. Dec CET 2020]
 
 
 <iframe style="width: 600px; height: 400px; overflow: hidden;"  scrolling="no" frameborder="0" src="https://editor.p5js.org/tinoschroeter/embed/5xl6mbu1E"></iframe>
