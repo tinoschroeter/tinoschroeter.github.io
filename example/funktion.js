@@ -2,4 +2,4 @@ function hallo(name) {
     return ("Hallo " + name)
 }
 
-console.log(hallo(Alice));
+console.log(hallo('Alice'));
